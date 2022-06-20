@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%- include ("../partials/header.ejs") %>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Display All People</title>
+    
+    <link rel='stylesheet' type='text/css' media='screen' href='../../public/stylesheets/allStyle.css'>
 </head>
 
 <body>
+  <header>
+    <h1>Student Display</h1>
+  </header>
 
-<%- include ("../partials/nav.ejs") %>
+  <nav>
+    <ul class="navbar">
+        <li><a href="/Homepage.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
+        <li><a href="/AddStudent.html">Add</a></li>
+        <li><a href="/Edit.html">Edit</a></li>
+        <li><a href="/Delete.html">Delete</a></li>
+        <li><a href="/Search.html">Search</a></li>
+        <li class="active" >
+            <form id="displaybutton" action="/displayAll" method="get">
+                <button>View Students</button>
+            </form>
+        </li>
+        <li class="right"><a href="/info.html">? Info</a></li>
+    </ul>
+  </nav>
 
-<div class="container">
+
+
+<div class="one">
 <h2>Database Results</h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
+<div class="rectGrid">
+
+    <% rows.forEach(function(r) { %>
+      <div>
+        <svg width="<%= r.s_weight + 10 %>" height="<%= r.s_height + 10 %>" style="fill:blue">
+          <rect x="5" y="5"  width="<%= r.s_weight %>" height="<%= r.s_height %>" style="stroke:rgb(0, 0, 0);stroke-width:3;opacity:0.3" />
+          <text x="10" y="<%= (r.s_height + 5)/2 %>" font-family="Verdana" font-size="20" fill="<%=r.s_haircolor%>"><%= r.fname %></text>
+          <text x="10" y="<%= (r.s_height + 5)/1.5 %>" font-family="Verdana" font-size="15" fill="black"><%= r.s_gpa %></text>
+      </svg>
+    </div>
     <% }); %>
 </ul>
 

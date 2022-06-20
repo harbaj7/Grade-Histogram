@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Students</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/allStyle.css'>
+    
+</head>
+<body>
+    <header>
+        <h1>Editing in progress...</h1>
+    </header>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="/Homepage.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
+            <li><a href="/AddStudent.html">Add</a></li>
+            <li class="active"><a href="/Edit.html">Edit</a></li>
+            <li><a href="/Delete.html">Delete</a></li>
+            <li><a href="/Search.html">Search</a></li>
+            <li>
+                <form id="displaybutton" action="/displayAll" method="get">
+                    <button>View Students</button>
+                </form>
+            </li>
+            <li class="right"><a href="/info.html">? Info</a></li>
+        </ul>
+    </nav>
+    <div class="one">
+        <h2> Edit the student info in the given attributes </h2>
+
+        <% rows.forEach(function(r) { %>
+            
+        <form class="Addtion" action="/EditComplete" method="post">
+            <label for="name">First Name</label>
+            <input type="text" name="fname" value="<%= r.fname %>" maxlength="15" required> <br>
+            <label for="name">Last Name</label>
+            <input type="text" name="LastName" value="<%= r.lastname %>" maxlength="15" required> <br>
+            <label for="ID">Student ID</label>
+            <input type="number" name="S_id" value="<%= r.s_id %>" min="1" max="999999" readonly> <sup>(not changable)</sup><br>
+            <label for="weight">Weight</label>
+            <input type="number" name="S_weight" value="<%= r.s_weight %>" step="0.01" min="80.00" max="500.00" required> (in lbs) <br>
+            <label for="height">Height</label>
+            <input type="number" name="S_height" value="<%= r.s_height %>" step="0.01" min="100.00" max="260.00" required> (in cm) <br>
+            <label for="haircolor">Hair color</label>
+            <select type="text" class="hair" name="S_haircolor">
+                <option value="<%= r.s_haircolor %>" selected><%= r.s_haircolor %></option>
+                <option value="black">Black</option>
+                <option value="brown">Brown</option>
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="white">White</option>
+                <option value="grey">Grey</option>
+              </select> <br>
+            <label for="GPA">GPA</label>
+            <input type="number" name="S_gpa" value="<%= r.s_gpa %>" step="0.01" min="0.00" max="4.33" required> <br>
+            
+            <input type="submit" name="sub" value="Edit Database"> <br> <br> <br>
+        </form>
+        <% }); %>
+    </div>
+</body>
+</html>
